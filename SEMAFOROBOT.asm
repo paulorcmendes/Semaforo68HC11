@@ -29,7 +29,8 @@ TESTE	LDAB	PORTC
 	JSR	FECHA
 	BRA	VOLTA
 
-FECHA	LDAA	SEMY
+FECHA	JSR	DELAYB
+	LDAA	SEMY
 	STAA	PORTB
 	JSR	DELAYYP
 	LDAA	SEMR
@@ -47,4 +48,9 @@ cont1	dey
 delayRP	ldy	#20000
 cont2	dey
 	bne	cont2
+	rts
+	
+delayB	ldy	#10000
+cont3	dey
+	bne	cont3
 	rts
