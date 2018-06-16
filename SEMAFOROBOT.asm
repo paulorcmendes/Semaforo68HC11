@@ -20,6 +20,7 @@ DDRC	EQU	$1007
 	staa	portb
 	ldaa	#%11111110
 	staa	ddrc
+
 *laco principal
 VOLTA	LDAA	SEMG
 	STAA	PORTB	
@@ -30,12 +31,22 @@ TESTE	LDAB	PORTC
 	BRA	VOLTA
 
 FECHA	JSR	DELAYB
+	JSR	RESTART
 	LDAA	SEMY
 	STAA	PORTB
 	JSR	DELAYYP
 	LDAA	SEMR
 	STAA	PORTB
 	JSR	DELAYRP
+	rts
+
+*reiniciar PC0
+RESTART	ldaa	#$00
+	staa	portb
+	ldaa	#%11111111
+	staa	ddrc
+	ldaa	#%11111110
+	staa	ddrc
 	rts
 
 
